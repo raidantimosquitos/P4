@@ -1,0 +1,7 @@
+[options]
+prefix = /home/lucas_herranz/PAV
+libdir = lib
+buildtype = release
+
+[properties]
+
