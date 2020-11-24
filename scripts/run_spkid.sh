@@ -36,7 +36,7 @@ if [[ $# < 1 ]]; then
    echo "  classerr: count errors in speaker recognition"
    echo "trainworld: estimate world model for speaker verification"
    echo "    verify: test gmm in verification task"
-   echo " verifyerr: count errors of verify"
+   echo " verif_err: count errors of verify"
    echo "finalclass: reserved for final test in the classification task"
    echo "finalverif: reserved for final test in the verification task"
    echo ""
