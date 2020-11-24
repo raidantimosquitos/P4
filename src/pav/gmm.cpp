@@ -1,4 +1,4 @@
-/* Copyright (C) Universitat Politècnica de Catalunya, Barcelona, Spain.
+/* Copyright (C) Universitat Politï¿½cnica de Catalunya, Barcelona, Spain.
  *
  * Permission to copy, use, modify, sell and distribute this software
  * is granted provided this copyright notice appears in all copies.
@@ -111,6 +111,8 @@ namespace upc {
 
     for (n=0; n<data.nrow(); ++n) {
       /// \TODO Compute the logprob of a single frame of the input data; you can use gmm_logprob() above.
+      lprob = lprob + gmm_logprob(data[n]);
+      /// \DONE
     }    
     return lprob/n;
   }
@@ -145,18 +147,18 @@ namespace upc {
 
     for (n=0; n<data.nrow(); ++n) {
       for (k=0; k < nmix; ++k) {
-	w[k] +=  weights[n][k];
-	for (j=0; j < vector_size; ++j) {
-	  mu[k][j] += weights[n][k] * data[n][j]; /* sum{x w_i} */
-	  inv_sigma[k][j] += weights[n][k] * data[n][j] * data[n][j]; /* sum{x^2 w_i} */
-	}
+        w[k] +=  weights[n][k];
+        for (j=0; j < vector_size; ++j) {
+          mu[k][j] += weights[n][k] * data[n][j]; /* sum{x w_i} */
+          inv_sigma[k][j] += weights[n][k] * data[n][j] * data[n][j]; /* sum{x^2 w_i} */
+        }
       }
     }
     for (k=0; k < nmix; ++k) {
       for (j=0; j < vector_size; ++j) {
-	mu[k][j] /= w[k]; /* sum{x w_i}/sum{w_i} */
-	inv_sigma[k][j] /= w[k]; /* sum{x^2 w_i}/sum{w_i} */
-	inv_sigma[k][j] = 1.0F/sqrt(inv_sigma[k][j] - mu[k][j]*mu[k][j]); /* 1/sigma */
+        mu[k][j] /= w[k]; /* sum{x w_i}/sum{w_i} */
+        inv_sigma[k][j] /= w[k]; /* sum{x^2 w_i}/sum{w_i} */
+        inv_sigma[k][j] = 1.0F/sqrt(inv_sigma[k][j] - mu[k][j]*mu[k][j]); /* 1/sigma */
       }
       w[k] /=  data.nrow();
     }
@@ -207,8 +209,17 @@ namespace upc {
 	  //
 	  // EM loop: em_expectation + em_maximization.
 	  //
+
+      new_prob = em_expectation(data,weights);
+      em_maximization(data, weights);
+      
       // Update old_prob, new_prob and inc_prob in order to stop the loop if logprob does not
       // increase more than inc_threshold.
+
+      inc_prob = new_prob - old_prob;
+      old_prob = new_prob;
+
+      /// \DONE
       if (verbose & 01)
 	cout << "GMM nmix=" << nmix << "\tite=" << iteration << "\tlog(prob)=" << new_prob << "\tinc=" << inc_prob << endl;
     }
