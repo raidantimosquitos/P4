@@ -51,16 +51,22 @@ ejercicios indicados.
 - Explique el procedimiento seguido para obtener un fichero de formato *fmatrix* a partir de los ficheros de
   salida de SPTK (líneas 45 a 47 del script `wav2lp.sh`).
 
-  
+   El fichero de formato *fmatrix* está compuesto por `ncol` columnas y `nrow` filas. El número de columnas `ncol` es el orden del LPC+1, correspondiente a la ganancia del filtro LPC. El número de filas `nrow` es el número de tramas de la señal. Mediante el comando `x2x` construimos la matriz de tamaño `nrow`x`ncol`.
 
   * ¿Por qué es conveniente usar este formato (u otro parecido)? Tenga en cuenta cuál es el formato de
     entrada y cuál es el de resultado.
 
+  El uso de una matriz permite acceder y organizar de una forma óptima los datos.
+
 - Escriba el *pipeline* principal usado para calcular los coeficientes cepstrales de predicción lineal
   (LPCC) en su fichero <code>scripts/wav2lpcc.sh</code>:
 
+  - `sox $inputfile -t raw -e signed -b 16 - | $X2X +sf | $FRAME -l 240 -p 80 | $WINDOW -l 240 -L 240 | $LPC -l 240 -m $lpc_order | $LPCC -m $lpc_order -M $cepstrum_order > $base.lp`
+
 - Escriba el *pipeline* principal usado para calcular los coeficientes cepstrales en escala Mel (MFCC) en su
   fichero <code>scripts/wav2mfcc.sh</code>:
+
+  - `sox $inputfile -t raw -e signed -b 16 - | $X2X +sf | $FRAME -l 240 -p 80 | $WINDOW -l 240 -L 240 | $MFCC -l 240 -m $mfcc_order -n $num_filters -s $frequency > $base.lp`
 
 ### Extracción de características.
 
