@@ -66,16 +66,31 @@ ejercicios indicados.
 - Escriba el *pipeline* principal usado para calcular los coeficientes cepstrales en escala Mel (MFCC) en su
   fichero <code>scripts/wav2mfcc.sh</code>:
 
-  - `sox $inputfile -t raw -e signed -b 16 - | $X2X +sf | $FRAME -l 240 -p 80 | $WINDOW -l 240 -L 240 | $MFCC -l 240 -m $mfcc_order -n $num_filters -s $frequency > $base.lp`
+  - `sox $inputfile -t raw -e signed -b 16 - | $X2X +sf | $FRAME -l 240 -p 80 | $WINDOW -l 240 -L 240 | $MFCC -l 240 -m $mfcc_order -n $num_filters > $base.lp`
 
 ### Extracción de características.
 
 - Inserte una imagen mostrando la dependencia entre los coeficientes 2 y 3 de las tres parametrizaciones
   para todas las señales de un locutor.
   
+  <img src="graphs/lp_2_3.png" width="640" align="center">
+  <img src="graphs/lpcc_2_3.png" width="640" align="center">
+  <img src="graphs/mfcc_2_3.png" width="640" align="center">
+
   + Indique **todas** las órdenes necesarias para obtener las gráficas a partir de las señales 
     parametrizadas.
+
+    Primero necesitamos crer un fichero txt para cada gráfica, que contenga el valor de los coeficientes 2 y 3 de los distintos métodos de predicción. Esto lo conseguimos con el siguiente pipeline:
+
+    `fmatrix_show work/lp/BLOCK01/SES013/*.lp | egrep '^\[' | cut -f4,5 > lp_2_3.txt`
+
+    Usamos el programa `fmatrix_show` y lo metemos en un pipeline con `cut` para cortar las columnas 4 y 5, correspondientes a los coeficientes 2 y 3, y pegarlas en un archivo txt. Repetimos el proceso, cambiando la extensión `.../*.lp` por `*.lpcc` y `*.mfcc` para crear 3 archivos distintos que usaremos para las 3 gráficas: `lp_2_3.txt`, `lpcc_2_3.txt` y `mfcc_2_3.txt`.
+
+    Una vez hecho esto creamos un script en python (`plot_coeff.py`), dentro de un nuevo directorio `graphs` que se encarga de obtener las gráficas a partir de los archivos txt.
+
   + ¿Cuál de ellas le parece que contiene más información?
+
+  Al observar las gráficas se puede ver que los coeficientes LP son mucho más correlados que los LPCC y los MFCC. Los MFCC son los que parecen proporcionar más información.
 
 - Usando el programa <code>pearson</code>, obtenga los coeficientes de correlación normalizada entre los
   parámetros 2 y 3 para un locutor, y rellene la tabla siguiente con los valores obtenidos.
