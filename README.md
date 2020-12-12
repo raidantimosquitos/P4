@@ -80,28 +80,32 @@ ejercicios indicados.
   + Indique **todas** las órdenes necesarias para obtener las gráficas a partir de las señales 
     parametrizadas.
 
-    Primero necesitamos crer un fichero txt para cada gráfica, que contenga el valor de los coeficientes 2 y 3 de los distintos métodos de predicción. Esto lo conseguimos con el siguiente pipeline:
+    + Primero necesitamos crer un fichero txt para cada gráfica, que contenga el valor de los coeficientes 2 y 3 de los distintos métodos de predicción. Esto lo conseguimos con el siguiente pipeline:
 
-    `fmatrix_show work/lp/BLOCK01/SES013/*.lp | egrep '^\[' | cut -f4,5 > lp_2_3.txt`
+    + `fmatrix_show work/lp/BLOCK01/SES013/*.lp | egrep '^\[' | cut -f4,5 > lp_2_3.txt`
 
-    Usamos el programa `fmatrix_show` y lo metemos en un pipeline con `cut` para cortar las columnas 4 y 5, correspondientes a los coeficientes 2 y 3, y pegarlas en un archivo txt. Repetimos el proceso, cambiando la extensión `.../*.lp` por `*.lpcc` y `*.mfcc` para crear 3 archivos distintos que usaremos para las 3 gráficas: `lp_2_3.txt`, `lpcc_2_3.txt` y `mfcc_2_3.txt`.
+    + Usamos el programa `fmatrix_show` y lo metemos en un pipeline con `cut` para cortar las columnas 4 y 5, correspondientes a los coeficientes 2 y 3, y pegarlas en un archivo txt. Repetimos el proceso, cambiando la extensión `.../*.lp` por `*.lpcc` y `*.mfcc` para crear 3 archivos distintos que usaremos para las 3 gráficas: `lp_2_3.txt`, `lpcc_2_3.txt` y `mfcc_2_3.txt`.
 
-    Una vez hecho esto creamos un script en python (`plot_coeff.py`), dentro de un nuevo directorio `graphs` que se encarga de obtener las gráficas a partir de los archivos txt.
+    + Una vez hecho esto creamos un script en python (`plot_coeff.py`), dentro de un nuevo directorio `graphs` que se encarga de obtener las gráficas a partir de los archivos txt.
 
   + ¿Cuál de ellas le parece que contiene más información?
 
-  Al observar las gráficas se puede ver que los coeficientes LP son mucho más correlados que los LPCC y los MFCC. Los MFCC son los que parecen proporcionar más información.
+    + Al observar las gráficas se puede ver que los coeficientes LP son mucho más correlados que los LPCC y los MFCC. Los MFCC son los que parecen proporcionar más información.
 
 - Usando el programa <code>pearson</code>, obtenga los coeficientes de correlación normalizada entre los
   parámetros 2 y 3 para un locutor, y rellene la tabla siguiente con los valores obtenidos.
 
-  |                        | LP   | LPCC | MFCC |
-  |------------------------|:----:|:----:|:----:|
-  | &rho;<sub>x</sub>[2,3] |      |      |      |
+  |                        | LP      | LPCC   | MFCC     |
+  |------------------------|:-------:|:------:|:--------:|
+  | &rho;<sub>x</sub>[2,3] |-0.812152|0.257603|-0.0707698|
   
   + Compare los resultados de <code>pearson</code> con los obtenidos gráficamente.
+
+  + El coeficiente Pearson para LP es el más cercano a <abs>1</abs>, por lo tanto se trata de la distribución más correlada entre los coeficientes 2 y 3. El valor numérico concuerda claramente con las conclusiones derivadas de la observación de las gráficas superiores. La parametrización MFCC es la que presenta menor correlación entre el segundo y tercer coeficiente, por consiguiente el coeficiente Pearson es de valor cercano a cero. El LPCC se encuentra en un valor intermedio con menor correlación que la parametrización LP, pero mayor que la MFCC.
   
 - Según la teoría, ¿qué parámetros considera adecuados para el cálculo de los coeficientes LPCC y MFCC?
+
+- El número de parámetros para el cálculo de los coeficientes LPCC es de 8 a 12. Mientras que para el cálculo de los coeficientes MFCC el número de parámetros adecuado va de 14 a 18.
 
 ### Entrenamiento y visualización de los GMM.
 
