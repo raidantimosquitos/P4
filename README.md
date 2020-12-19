@@ -156,6 +156,24 @@ Complete el código necesario para realizar reconociminto del locutor y optimice
 - Inserte una tabla con la tasa de error obtenida en el reconocimiento de los locutores de la base de datos
   SPEECON usando su mejor sistema de reconocimiento para los parámetros LP, LPCC y MFCC.
 
+    Método            | LP      | LPCC   | MFCC     |
+   -------------------|:-------:|:------:|:--------:|
+    Número de errores |      92 |     28 |       38 |
+    Número total      |     785 |    785 |      785 |
+    Tasa de error     |  11,72% |  3,57% |    4,84% |
+
+  - Los parámetros para el método de cálculo de coeficientes LP son: 
+    * Número de coeficientes: 25
+
+  - Los parámetros para los coeficientes LPCC son:
+    * Número de coeficientes: 18
+    * Número de filtros: 13 
+
+  - Los parámetros para el cálculo de coeficientes mediante MFCC son:
+    * Número de coeficientes: 13
+    * Número de filtros: 20
+  
+  - Para todos los métodos de cálculo de coeficientes hemos utilizado la misma configuración de GMM. Un total de 30 Gaussianas en GMM Mix, se inicializan mediante el método VQ (threshold de inicialización 0,0005) y threshold del incremento de log-probabilidad entre iteraciones de 0,0005.
 
 
 
