@@ -56,7 +56,7 @@ ejercicios indicados.
   * ¿Por qué es conveniente usar este formato (u otro parecido)? Tenga en cuenta cuál es el formato de
     entrada y cuál es el de resultado.
 
-  El uso de una matriz permite acceder y organizar de una forma óptima los datos.
+    + El uso de una matriz permite acceder y organizar de una forma óptima los datos.
 
 - Escriba el *pipeline* principal usado para calcular los coeficientes cepstrales de predicción lineal
   (LPCC) en su fichero <code>scripts/wav2lpcc.sh</code>:
