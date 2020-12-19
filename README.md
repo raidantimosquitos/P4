@@ -79,9 +79,9 @@ ejercicios indicados.
 - Inserte una imagen mostrando la dependencia entre los coeficientes 2 y 3 de las tres parametrizaciones
   para todas las señales de un locutor.
   
-  <img src="graphs/lp_2_3.png" width="640" align="center">
-  <img src="graphs/lpcc_2_3.png" width="640" align="center">
-  <img src="graphs/mfcc_2_3.png" width="640" align="center">
+  <img src="graphs/lp_2_3.png" width="540" align="center">
+  <img src="graphs/lpcc_2_3.png" width="540" align="center">
+  <img src="graphs/mfcc_2_3.png" width="540" align="center">
 
   + Indique **todas** las órdenes necesarias para obtener las gráficas a partir de las señales 
     parametrizadas.
@@ -124,12 +124,12 @@ Complete el código necesario para entrenar modelos GMM.
 
   + Para el speaker 13 tenemos la siguiente función de densidad de probabilidad modelada por el GMM. Se muestran los dos primeros coeficientes MFCC.
 
-  <img src="graphs/mfcc_gmm_13.png" width="640" align="center">
+  <img src="graphs/mfcc_gmm_13.png" width="540" align="center">
   
 
   + Para el speaker 11, la función de densidad de probabilidad es la siguiente:
 
-  <img src="graphs/mfcc_gmm_11.png" width="640" align="center">
+  <img src="graphs/mfcc_gmm_11.png" width="540" align="center">
 
 
 - Inserte una gráfica que permita comparar los modelos y poblaciones de dos locutores distintos (la gŕafica
