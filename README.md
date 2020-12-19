@@ -64,12 +64,12 @@ ejercicios indicados.
 - Escriba el *pipeline* principal usado para calcular los coeficientes cepstrales de predicción lineal
   (LPCC) en su fichero <code>scripts/wav2lpcc.sh</code>:
 
-  - `sox $inputfile -t raw -e signed -b 16 - | $X2X +sf | $FRAME -l 240 -p 80 | $WINDOW -l 240 -L 240 | $LPC -l 240 -m $lpc_order | $LPCC -m $lpc_order -M $cepstrum_order > $base.lp`
+  - `sox $inputfile -t raw -e signed -b 16 - | $X2X +sf | $FRAME -l 240 -p 80 | $WINDOW -l 240 -L 240 | $LPC -l 240 -m $lpc_order | $LPCC -m $lpc_order -M $cepstrum_order > $base.lpcc`
 
 - Escriba el *pipeline* principal usado para calcular los coeficientes cepstrales en escala Mel (MFCC) en su
   fichero <code>scripts/wav2mfcc.sh</code>:
 
-  - `sox $inputfile -t raw -e signed -b 16 - | $X2X +sf | $FRAME -l 240 -p 80 | $WINDOW -l 240 -L 240 | $MFCC -l 240 -m $mfcc_order -n $num_filters > $base.lp`
+  - `sox $inputfile -t raw -e signed -b 16 - | $X2X +sf | $FRAME -l 240 -p 80 | $WINDOW -l 240 -L 240 | $MFCC -l 240 -m $mfcc_order -n $num_filters > $base.mfcc`
 
 
 
@@ -101,9 +101,9 @@ ejercicios indicados.
 - Usando el programa <code>pearson</code>, obtenga los coeficientes de correlación normalizada entre los
   parámetros 2 y 3 para un locutor, y rellene la tabla siguiente con los valores obtenidos.
 
-  |                        | LP      | LPCC   | MFCC     |
-  |------------------------|:-------:|:------:|:--------:|
-  | &rho;<sub>x</sub>[2,3] |-0.812152|0.257603|-0.0707698|
+  |                        | LP      | LPCC   | MFCC    |
+  |------------------------|:-------:|:------:|:-------:|
+  | &rho;<sub>x</sub>[2,3] |-0.806275|0.207468|0.0361282|
   
   + Compare los resultados de <code>pearson</code> con los obtenidos gráficamente.
 
@@ -158,20 +158,20 @@ Complete el código necesario para realizar reconociminto del locutor y optimice
 
     Método            | LP      | LPCC   | MFCC     |
    -------------------|:-------:|:------:|:--------:|
-    Número de errores |      92 |     28 |       38 |
+    Número de errores |      85 |      4 |       11 |
     Número total      |     785 |    785 |      785 |
-    Tasa de error     |  11,72% |  3,57% |    4,84% |
+    Tasa de error     |  10,83% |  0,51% |    1,40% |
 
   - Los parámetros para el método de cálculo de coeficientes LP son: 
     * Número de coeficientes: 25
 
   - Los parámetros para los coeficientes LPCC son:
-    * Número de coeficientes: 18
-    * Número de filtros: 13 
+    * Número de coeficientes: 25
+    * Número de filtros: 25 
 
   - Los parámetros para el cálculo de coeficientes mediante MFCC son:
     * Número de coeficientes: 13
-    * Número de filtros: 20
+    * Número de filtros: 30
   
   - Para todos los métodos de cálculo de coeficientes hemos utilizado la misma configuración de GMM. Un total de 30 Gaussianas en GMM Mix, se inicializan mediante el método VQ (threshold de inicialización 0,0005) y threshold del incremento de log-probabilidad entre iteraciones de 0,0005.
 
@@ -186,6 +186,11 @@ Complete el código necesario para realizar verificación del locutor y optimice
   pérdidas, y el score obtenido usando la parametrización que mejor resultado le hubiera dado en la tarea
   de reconocimiento.
 
+  - Con la configuración que nos proporciona la menor tasa de error en el Reconocimiento de Locutor, obtenemos los siguientes resultados en el sistema de verificación:
+
+  | Threshold   | Missed      | False Alarm   | Cost Detection    |
+  |-------------|:-----------:|:-------------:|:-----------------:|
+  |      0.6864 |          74 |             0 |              29.6 |
 
 
 
