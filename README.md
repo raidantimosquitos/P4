@@ -140,8 +140,7 @@ Complete el código necesario para entrenar modelos GMM.
 
   + Vemos claramente como el modelo GMM se adapta a sus respectivas poblaciones (en rojo el speaker 13 y en azul el 11).
 
-  |:----------------------------------------------------------------:|:-------------------------------------------|
-  |<img src="graphs/mfcc_red13_red13.png" width="350" align="center">|<img src="graphs/mfcc_blue11_blue11.png" width="350" align="center">|
+  <img src="graphs/mfcc_red13_red13.png" width="350" align="center"><img src="graphs/mfcc_blue11_blue11.png" width="350" align="center">
 
 
   + En cambio, si visualizamos ahora el modelo GMM de un speaker para la población del otro, concluimos que no se adapta de la misma forma que las figuras anteriores.
