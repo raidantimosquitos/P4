@@ -186,12 +186,19 @@ Complete el código necesario para realizar verificación del locutor y optimice
   pérdidas, y el score obtenido usando la parametrización que mejor resultado le hubiera dado en la tarea
   de reconocimiento.
 
-  - Con la configuración que nos proporciona la menor tasa de error en el Reconocimiento de Locutor, obtenemos los siguientes resultados en el sistema de verificación:
+  - La configuración que mejor resultado nos consigue en la fase de verificación del locutor, es la parametrización MFCC con 13 coeficientes y 30 filtros. Los ajustes de GMM son 30 Gaussianas de Mix, inicializadas con VQ de threshold de inicialzación 0,0005 y threshold de incremento de la log-probabilidad de 0,0005. Y el modelo GMMWorld se ha entrenado con 100 Gaussianes inicializadas de forma aleatoria. Los resultados de verificación son los de la siguiente tabla:
 
-  | Threshold   | Missed      | False Alarm   | Cost Detection    |
-  |-------------|:-----------:|:-------------:|:-----------------:|
-  |      0.6864 |          74 |             0 |              29.6 |
+    | Threshold   | Missed      | False Alarm   | Cost Detection    |
+    |-------------|:-----------:|:-------------:|:-----------------:|
+    |      0.6864 |          74 |             0 |              29.6 |
 
+  - Con la configuración que nos proporciona la menor tasa de error en la fase de Reconocimiento de Locutor, obtenemos los siguientes resultados en el sistema de verificación:
+
+    | Threshold   | Missed      | False Alarm   | Cost Detection    |
+    |-------------|:-----------:|:-------------:|:-----------------:|
+    |      0.3195 |          52 |             1 |              30.7 |
+  
+  - A partir de los resultados obtenidos, podemos de deducir que la parametrización MFCC es la que proporciona una mejor tasa de verificación del locutor. Concuerda con los resultados de Pearson, que mostraban una menor correlación entre coeficientes para esta parametrización. Esto facilita la tarea de verificación.
 
 
 ### Test final
