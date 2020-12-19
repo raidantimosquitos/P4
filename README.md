@@ -25,6 +25,9 @@ repositorio de la práctica.
 A modo de memoria de la parte básica, complete, en este mismo documento y usando el formato *markdown*, los
 ejercicios indicados.
 
+
+
+
 ## Ejercicios.
 
 ### SPTK, Sox y los scripts de extracción de características.
@@ -68,6 +71,9 @@ ejercicios indicados.
 
   - `sox $inputfile -t raw -e signed -b 16 - | $X2X +sf | $FRAME -l 240 -p 80 | $WINDOW -l 240 -L 240 | $MFCC -l 240 -m $mfcc_order -n $num_filters > $base.lp`
 
+
+
+
 ### Extracción de características.
 
 - Inserte una imagen mostrando la dependencia entre los coeficientes 2 y 3 de las tres parametrizaciones
@@ -107,16 +113,43 @@ ejercicios indicados.
 
   - El número de parámetros para el cálculo de los coeficientes LPCC es de 8 a 12. Mientras que para el cálculo de los coeficientes MFCC el número de parámetros adecuado va de 14 a 18.
 
+
+
 ### Entrenamiento y visualización de los GMM.
 
 Complete el código necesario para entrenar modelos GMM.
 
 - Inserte una gráfica que muestre la función de densidad de probabilidad modelada por el GMM de un locutor
   para sus dos primeros coeficientes de MFCC.
+
+  + Para el speaker 13 tenemos la siguiente función de densidad de probabilidad modelada por el GMM. Se muestran los dos primeros coeficientes MFCC.
+
+  <img src="graphs/mfcc_gmm_13.png" width="640" align="center">
   
+
+  + Para el speaker 11, la función de densidad de probabilidad es la siguiente:
+
+  <img src="graphs/mfcc_gmm_11.png" width="640" align="center">
+
+
 - Inserte una gráfica que permita comparar los modelos y poblaciones de dos locutores distintos (la gŕafica
   de la página 20 del enunciado puede servirle de referencia del resultado deseado). Analice la capacidad
   del modelado GMM para diferenciar las señales de uno y otro.
+
+  + Comparamos el modelo GMM y las poblaciones de los dos speakers de las figuras anteriores (11 y 13).
+
+  + Vemos claramente como el modelo GMM se adapta a sus respectivas poblaciones (en rojo el speaker 13 y en azul el 13).
+
+  <img src="graphs/mfcc_red13_red13.png" width="640" align="center">
+  <img src="graphs/mfcc_blue11_blue11.png" width="640" align="center">
+
+
+  + En cambio, si visualizamos ahora el modelo GMM de un speaker para la población del otro, concluimos que no se adapta de la misma forma que las figuras anteriores.
+
+  <img src="graphs/mfcc_blue11_red_13.png" width="640" align="center">
+  <img src="graphs/mfcc_red13_blue_11.png" width="640" align="center">
+
+
 
 ### Reconocimiento del locutor.
 
@@ -124,6 +157,9 @@ Complete el código necesario para realizar reconociminto del locutor y optimice
 
 - Inserte una tabla con la tasa de error obtenida en el reconocimiento de los locutores de la base de datos
   SPEECON usando su mejor sistema de reconocimiento para los parámetros LP, LPCC y MFCC.
+
+
+
 
 ### Verificación del locutor.
 
@@ -133,11 +169,17 @@ Complete el código necesario para realizar verificación del locutor y optimice
   de verificación de SPEECON. La tabla debe incluir el umbral óptimo, el número de falsas alarmas y de
   pérdidas, y el score obtenido usando la parametrización que mejor resultado le hubiera dado en la tarea
   de reconocimiento.
- 
+
+
+
+
 ### Test final
 
 - Adjunte, en el repositorio de la práctica, los ficheros `class_test.log` y `verif_test.log` 
   correspondientes a la evaluación *ciega* final.
+
+
+
 
 ### Trabajo de ampliación.
 
