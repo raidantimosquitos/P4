@@ -101,11 +101,11 @@ ejercicios indicados.
   
   + Compare los resultados de <code>pearson</code> con los obtenidos gráficamente.
 
-  + El coeficiente Pearson para LP es el más cercano a <abs>1</abs>, por lo tanto se trata de la distribución más correlada entre los coeficientes 2 y 3. El valor numérico concuerda claramente con las conclusiones derivadas de la observación de las gráficas superiores. La parametrización MFCC es la que presenta menor correlación entre el segundo y tercer coeficiente, por consiguiente el coeficiente Pearson es de valor cercano a cero. El LPCC se encuentra en un valor intermedio con menor correlación que la parametrización LP, pero mayor que la MFCC.
+    + El coeficiente Pearson para LP es el más cercano a <abs>1</abs>, por lo tanto se trata de la distribución más correlada entre los coeficientes 2 y 3. El valor numérico concuerda claramente con las conclusiones derivadas de la observación de las gráficas superiores. La parametrización MFCC es la que presenta menor correlación entre el segundo y tercer coeficiente, por consiguiente el coeficiente Pearson es de valor cercano a cero. El LPCC se encuentra en un valor intermedio con menor correlación que la parametrización LP, pero mayor que la MFCC.
   
 - Según la teoría, ¿qué parámetros considera adecuados para el cálculo de los coeficientes LPCC y MFCC?
 
-- El número de parámetros para el cálculo de los coeficientes LPCC es de 8 a 12. Mientras que para el cálculo de los coeficientes MFCC el número de parámetros adecuado va de 14 a 18.
+  - El número de parámetros para el cálculo de los coeficientes LPCC es de 8 a 12. Mientras que para el cálculo de los coeficientes MFCC el número de parámetros adecuado va de 14 a 18.
 
 ### Entrenamiento y visualización de los GMM.
 

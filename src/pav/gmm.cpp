@@ -222,6 +222,9 @@ namespace upc {
       /// \DONE
       if (verbose & 01)
 	cout << "GMM nmix=" << nmix << "\tite=" << iteration << "\tlog(prob)=" << new_prob << "\tinc=" << inc_prob << endl;
+
+      if (inc_prob <= inc_threshold) 
+        return 0; 
     }
     return 0;
   }
