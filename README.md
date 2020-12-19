@@ -79,9 +79,9 @@ ejercicios indicados.
 - Inserte una imagen mostrando la dependencia entre los coeficientes 2 y 3 de las tres parametrizaciones
   para todas las señales de un locutor.
   
-  <img src="graphs/lp_2_3.png" width="640" height="320" align="center">
-  <img src="graphs/lpcc_2_3.png" width="640" height="320" align="center">
-  <img src="graphs/mfcc_2_3.png" width="640" height="320" align="center">
+  <img src="graphs/lp_2_3.png" width="640" align="center">
+  <img src="graphs/lpcc_2_3.png" width="640" align="center">
+  <img src="graphs/mfcc_2_3.png" width="640" align="center">
 
   + Indique **todas** las órdenes necesarias para obtener las gráficas a partir de las señales 
     parametrizadas.
@@ -140,14 +140,12 @@ Complete el código necesario para entrenar modelos GMM.
 
   + Vemos claramente como el modelo GMM se adapta a sus respectivas poblaciones (en rojo el speaker 13 y en azul el 11).
 
-  <img src="graphs/mfcc_red13_red13.png" width="500" height="500" align="center">
-  <img src="graphs/mfcc_blue11_blue11.png" width="500" height="500" align="center">
+  <img src="graphs/mfcc_red13_red13.png" width="400" align="center"> <img src="graphs/mfcc_blue11_blue11.png" width="400" align="center">
 
 
   + En cambio, si visualizamos ahora el modelo GMM de un speaker para la población del otro, concluimos que no se adapta de la misma forma que las figuras anteriores.
 
-  <img src="graphs/mfcc_blue11_red_13.png" width="500" height="500" align="center">
-  <img src="graphs/mfcc_red13_blue_11.png" width="500" height="500" align="center">
+  <img src="graphs/mfcc_blue11_red_13.png" width="400" align="center"> <img src="graphs/mfcc_red13_blue_11.png" width="400" align="center">
 
 
 
